@@ -28,6 +28,28 @@ public class Dispensador {
 		return condicion;
 		
 	}
+	
+	public static boolean sacarProducto(int serial, int cantidad){
+		boolean verificacion = false;
+		for (Productos productosASacar : product) {
+			if(serial == productosASacar.getSerial() && productosASacar.getCantidad() - cantidad >= 0){
+				productosASacar.setCantidad(productosASacar.getCantidad() - cantidad);
+				verificacion = true;
+			}
+		}
+		return verificacion;
+	}
+	
+	public static boolean ingresarUnidadProducto(int serial, int cantidad){
+		boolean verificacion = false;
+		for (Productos productosAIngresar : product) {
+			if(serial == productosAIngresar.getSerial() && cantidad + productosAIngresar.getCantidad() <= 12){
+				productosAIngresar.setCantidad(productosAIngresar.getCantidad() + cantidad);
+				verificacion = true;
+			}
+		}
+		return verificacion;
+	}
 	public Productos getProducto() {
 		return producto;
 	}
